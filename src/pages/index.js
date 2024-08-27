@@ -8,13 +8,17 @@ const min_counter = -10;
 export default function Home() {
   const [ count, setCount ] = useState(0);
   const [ tempCount, setTempCount ] = useState(null);
+  const [history, setHistory] = useState([]);
   
   const increaseCounter = () => {
     if (count >= max_counter) {
       alert("max counter reached");
       return;
     }
+  
+    setHistory([...history, count]);
     setCount(count + 1);
+    console.log(history);
   }
 
   const decreaseCounter = () => {
@@ -22,7 +26,10 @@ export default function Home() {
       alert("min counter reached");
       return;
     }
-    setCount(count - 1)
+    
+    setHistory(count);
+    setCount(count - 1);
+    console.log(history);
   }
 
   const handleInput = (e) => {
@@ -31,7 +38,9 @@ export default function Home() {
   }
 
   const handleReset = () => {
+    setHistory(count);
     setCount(tempCount);
+    console.log(history);
   }
 
   return (
@@ -59,6 +68,9 @@ export default function Home() {
           text="reset to custom value"
           onClick={handleReset}
         />
+        <div>
+          {history}
+        </div>
       </main>
     </>
   );
