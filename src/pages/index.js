@@ -12,6 +12,10 @@ export default function Home() {
   const decreaseCounter = () => {
     setCount(count - 1)
   }
+  const handleInput = (e) => {
+    const value = e.target.value;
+    setCount(Number(value));
+  }
   return (
     <>
       <Head>
@@ -22,10 +26,16 @@ export default function Home() {
       </Head>
       <main>
         <h1 className="heading">Hello {count}</h1>
-        <button onClick={decreaseCounter}>dec count</button>
+        <MyButton
+          text="decrease counter"
+          onClick={decreaseCounter}
+        />
         <MyButton 
           text="increase counter" 
           onClick={increaseCounter}
+        />
+        <input
+          onInput={handleInput}
         />
       </main>
     </>
