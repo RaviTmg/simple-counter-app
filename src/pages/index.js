@@ -2,16 +2,28 @@ import Head from "next/head";
 import { useState } from "react";
 import MyButton from "./my-button";
 
+const max_counter = 10;
+const min_counter = -10;
+
 export default function Home() {
   const [ count, setCount ] = useState(0);
   
   const increaseCounter = () => {
+    if (count >= max_counter) {
+      alert("max counter reached");
+      return;
+    }
     setCount(count + 1);
   }
 
   const decreaseCounter = () => {
+    if (count <= min_counter) {
+      alert("min counter reached");
+      return;
+    }
     setCount(count - 1)
   }
+
   const handleInput = (e) => {
     const value = e.target.value;
     setCount(Number(value));
