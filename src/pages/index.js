@@ -43,6 +43,16 @@ export default function Home() {
     console.log(history);
   }
 
+  const handleUndo = () => {
+    if (history.length === 0) return;
+    
+    const lastElementIndex = history.length - 1;
+    setCount(history[lastElementIndex]);
+
+    const newHistory = history.slice(0, lastElementIndex);
+    setHistory(newHistory);
+  };
+
   return (
     <>
       <Head>
@@ -67,6 +77,10 @@ export default function Home() {
         <MyButton
           text="reset to custom value"
           onClick={handleReset}
+        />
+        <MyButton 
+          text="undo"
+          onClick={handleUndo}
         />
         <div>
           {history}
