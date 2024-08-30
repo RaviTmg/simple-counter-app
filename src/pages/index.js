@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import MyButton from "./my-button";
+import History from "./history";
 
 const max_counter = 10;
 const min_counter = -10;
@@ -82,9 +83,9 @@ export default function Home() {
           text="undo"
           onClick={handleUndo}
         />
-        <div>
-          {history}
-        </div>
+        <History
+          history={history}
+        />
       </main>
     </>
   );
