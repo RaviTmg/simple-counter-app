@@ -2,20 +2,57 @@ import Head from "next/head";
 import { useState } from "react";
 import MyButton from "./my-button";
 
+const max_counter = 10;
+const min_counter = -10;
+
 export default function Home() {
   const [ count, setCount ] = useState(0);
+  const [ tempCount, setTempCount ] = useState(null);
+  const [history, setHistory] = useState([]);
   
   const increaseCounter = () => {
+    if (count >= max_counter) {
+      alert("max counter reached");
+      return;
+    }
+  
+    setHistory([...history, count]);
     setCount(count + 1);
+    console.log(history);
   }
 
   const decreaseCounter = () => {
-    setCount(count - 1)
+    if (count <= min_counter) {
+      alert("min counter reached");
+      return;
+    }
+    
+    setHistory(count);
+    setCount(count - 1);
+    console.log(history);
   }
+
   const handleInput = (e) => {
     const value = e.target.value;
-    setCount(Number(value));
+    setTempCount(Number(value));
   }
+
+  const handleReset = () => {
+    setHistory(count);
+    setCount(tempCount);
+    console.log(history);
+  }
+
+  const handleUndo = () => {
+    if (history.length === 0) return;
+    
+    const lastElementIndex = history.length - 1;
+    setCount(history[lastElementIndex]);
+
+    const newHistory = history.slice(0, lastElementIndex);
+    setHistory(newHistory);
+  };
+
   return (
     <>
       <Head>
@@ -37,6 +74,17 @@ export default function Home() {
         <input
           onInput={handleInput}
         />
+        <MyButton
+          text="reset to custom value"
+          onClick={handleReset}
+        />
+        <MyButton 
+          text="undo"
+          onClick={handleUndo}
+        />
+        <div>
+          {history}
+        </div>
       </main>
     </>
   );
