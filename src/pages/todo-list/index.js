@@ -19,6 +19,11 @@ export function TodoList () {
         setTasks([...tasks, inputTask]);
     };
 
+    const handleRemoveTask = (taskIndex) => {
+        const filtered = tasks.filter((t, i) => i !== taskIndex);
+        setTasks(filtered);
+    }
+
     return (
         <div>
             <h1>Task Manager</h1>
@@ -31,11 +36,13 @@ export function TodoList () {
             </div>
             <ul>
                 {
-                    tasks.map((task) => {
+                    tasks.map((task, taskIndex) => {
                         return (
                             <li>
                                 <span>{task}</span>
-                                <button>remove task</button>
+                                <button
+                                    onClick={() => handleRemoveTask(taskIndex)}
+                                >remove task</button>
                             </li>
                         );
                     })
