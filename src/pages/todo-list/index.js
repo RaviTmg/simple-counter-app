@@ -19,6 +19,33 @@ export function TodoList () {
     };
 
     const handleAddNewTask = () => {
+        /**
+        [
+            {
+                name: "do homework",
+                completed: false,
+            }, 
+            {
+                name: "eat bhaat",
+                completed: false,
+            },
+        ]
+            this becomes 
+        [
+            {
+                name: "do homework",
+                completed: false,
+            }, 
+            {
+                name: "eat bhaat",
+                completed: false,
+            },
+            {   
+                name: "call girlfriend",
+                completed: false
+            }
+        ]
+        */
         setTasks([...tasks, { name: inputTask, completed: false }]);
     };
 
@@ -28,11 +55,17 @@ export function TodoList () {
     }
 
     const handleCompleteTask = (taskIndex) => {
+        /**
+         * second ma click garda, taskIndex = 1
+         * iteration 1: i = 0, return { name: "do homework", completed: false }
+         * iteration 2: i = 1, return { name: "eat bhaat", completed: true }
+         * these 2 returned values combine to become newTasks
+         */
         const newTasks = tasks.map((task, i) => {
             if (taskIndex !== i) return task;
             return {
                 ...task,
-                completed: true
+                completed: true,
             };
         });
         setTasks(newTasks);
