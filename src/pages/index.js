@@ -3,6 +3,9 @@ import { useState } from "react";
 import MyButton from "./my-button";
 import History from "./history";
 import { TodoList } from "./todo-list";
+import AlertShow from "./alert-show";
+import Greeting from "./greeting";
+import CountryList from "./country-list";
 
 const max_counter = 10;
 const min_counter = -10;
@@ -87,8 +90,10 @@ export default function Home() {
         <History
           history={history}
         />
-
         <TodoList/>
+        <AlertShow />
+        <Greeting/>
+        <CountryList/>
       </main>
     </>
   );
