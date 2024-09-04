@@ -17,7 +17,7 @@ export default function Greeting () {
             <input onInput={handleInput}/>
             <button onClick={handleClick}>enter</button>
             <div>
-                <h1>
+                <div>
                     Greetings!!
                 </div>
                 <div>
