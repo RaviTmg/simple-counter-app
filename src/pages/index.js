@@ -6,6 +6,7 @@ import { TodoList } from "./todo-list";
 import AlertShow from "./alert-show";
 import Greeting from "./greeting";
 import CountryList from "./country-list";
+import Groceries from "./groceries";
 
 const max_counter = 10;
 const min_counter = -10;
@@ -94,6 +95,7 @@ export default function Home() {
         <AlertShow />
         <Greeting/>
         <CountryList/>
+        <Groceries/>
       </main>
     </>
   );
