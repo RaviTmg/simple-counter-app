@@ -7,6 +7,7 @@ import AlertShow from "./alert-show";
 import Greeting from "./greeting";
 import CountryList from "./country-list";
 import Groceries from "./groceries";
+import Shopping from "./shopping";
 
 const max_counter = 10;
 const min_counter = -10;
@@ -96,6 +97,7 @@ export default function Home() {
         <Greeting/>
         <CountryList/>
         <Groceries/>
+        <Shopping/>
       </main>
     </>
   );
