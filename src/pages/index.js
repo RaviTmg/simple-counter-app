@@ -7,6 +7,7 @@ import AlertShow from "./alert-show";
 import Greeting from "./greeting";
 import CountryList from "./country-list";
 import Groceries from "./groceries";
+import Shopping from "./shopping";
 
 const max_counter = 10;
 const min_counter = -10;
@@ -15,13 +16,13 @@ export default function Home() {
   const [ count, setCount ] = useState(0);
   const [ tempCount, setTempCount ] = useState(null);
   const [history, setHistory] = useState([]);
-  
+
   const increaseCounter = () => {
     if (count >= max_counter) {
       alert("max counter reached");
       return;
     }
-  
+
     setHistory([...history, count]);
     setCount(count + 1);
     console.log(history);
@@ -32,7 +33,7 @@ export default function Home() {
       alert("min counter reached");
       return;
     }
-    
+
     setHistory(count);
     setCount(count - 1);
     console.log(history);
@@ -51,7 +52,7 @@ export default function Home() {
 
   const handleUndo = () => {
     if (history.length === 0) return;
-    
+
     const lastElementIndex = history.length - 1;
     setCount(history[lastElementIndex]);
 
@@ -73,8 +74,8 @@ export default function Home() {
           text="decrease counter"
           onClick={decreaseCounter}
         />
-        <MyButton 
-          text="increase counter" 
+        <MyButton
+          text="increase counter"
           onClick={increaseCounter}
         />
         <input
@@ -84,7 +85,7 @@ export default function Home() {
           text="reset to custom value"
           onClick={handleReset}
         />
-        <MyButton 
+        <MyButton
           text="undo"
           onClick={handleUndo}
         />
@@ -96,6 +97,7 @@ export default function Home() {
         <Greeting/>
         <CountryList/>
         <Groceries/>
+        <Shopping/>
       </main>
     </>
   );
