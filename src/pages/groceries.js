@@ -65,12 +65,12 @@ export default function Groceries () {
 
         const cheapest = newGroceryList[0];
 
-        alert(`The cheapest grocery is ${cheapest.name}. Its price is ${cheapest.price}`);    
+        alert(`The cheapest grocery is ${cheapest.name}. Its price is ${cheapest.price}`);
     }
 
     const handleShowTotalNumber = () => {
         const totalNumber = groceryList.length;
-        
+
         alert(`The total number of groceries is ${totalNumber}`)
     };
 
@@ -96,6 +96,14 @@ export default function Groceries () {
         alert(`the average price is ${averageCost}`);
     }
 
+
+    const handleDisplayPriceOfFarsi = () => {
+        const farsiItem = groceryList.find(item => {
+            return item.name === selectedItem;
+        });
+        alert(`the price of farsi is ${ farsiItem.price }`)
+    };
+
     return (
         <div>
             <h1>Grocery List</h1>
@@ -108,6 +116,7 @@ export default function Groceries () {
             <button onClick={handleShowTotalNumber}>show total number</button>
             <button onClick={handleTotalCost}>show total cost</button>
             <button onClick={handleAverageCost}>show average cost</button>
+            <button onClick={handleDisplayPriceOfFarsi}>display price of farsi</button>
             <ul>
                 {
                     groceryList.map((groceryItem) => {
