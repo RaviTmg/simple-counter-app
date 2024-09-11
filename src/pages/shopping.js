@@ -5,7 +5,7 @@ export default function Shopping () {
         {
             name: "Tshirt",
             size: ["S"],
-            quantity: 10
+            quantity: 50
         },
         {
             name: "Pant",
@@ -63,11 +63,25 @@ export default function Shopping () {
         setShoppingList(mediumOnlyMapped);
     };
 
+    const handleSortAscending = () => {
+
+        const newList = [...shoppingList];
+        newList.sort(function(a, b) { // a = t, b = p
+            let x = a.name.toUpperCase();
+            let y = b.name.toUpperCase();
+            if (x < y) {return -1;} // false
+            if (x > y) {return 1;} // true --> b=p comes before a=t
+            return 0;
+        });
+        setShoppingList(newList);
+    };
+    
     return (<div>
         <h1>Shopping List</h1>
         <button onClick={handleShowSmall}>show small</button>
         <button onClick={handleShowMedium}>show medium</button>
         <button onClick={handleSmallOrMedium}>show small or medium</button>
+        <button onClick={handleSortAscending}>sort ascending</button>
         <ul>
             {
                 shoppingList.map(shoppingItem => {
