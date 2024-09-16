@@ -8,6 +8,7 @@ import Greeting from "./greeting";
 import CountryList from "./country-list";
 import Groceries from "./groceries";
 import Shopping from "./shopping";
+import { BackgroundChanger } from "./background-changer";
 
 const max_counter = 10;
 const min_counter = -10;
@@ -98,6 +99,7 @@ export default function Home() {
         <CountryList/>
         <Groceries/>
         <Shopping/>
+        <BackgroundChanger/>
       </main>
     </>
   );

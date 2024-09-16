@@ -76,12 +76,22 @@ export default function Shopping () {
         setShoppingList(newList);
     };
     
-    return (<div>
-        <h1>Shopping List</h1>
-        <button onClick={handleShowSmall}>show small</button>
-        <button onClick={handleShowMedium}>show medium</button>
-        <button onClick={handleSmallOrMedium}>show small or medium</button>
-        <button onClick={handleSortAscending}>sort ascending</button>
+    return (<div 
+        style={{
+            backgroundColor: "skyblue",
+            marginTop: "10px",
+        }}
+    >
+        <h1 
+            style={{
+                color: "blue",
+                textDecoration: "underline",
+            }}
+        >Shopping List</h1>
+        <button className="btn btn-large btn-blue" onClick={handleShowSmall}>show small</button>
+        <button className="btn" onClick={handleShowMedium}>show medium</button>
+        <button className="btn" onClick={handleSmallOrMedium}>show small or medium</button>
+        <button className="btn" onClick={handleSortAscending}>sort ascending</button>
         <ul>
             {
                 shoppingList.map(shoppingItem => {

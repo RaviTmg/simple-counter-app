@@ -1,3 +1,16 @@
-.heading {
-  color: blue;
+.btn {
+  background-color: brown;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  color: white;
+}
+
+.btn-large {
+  padding: 12px;
+}
+
+.btn-blue {
+  background-color: blue;
+  text-decoration: dashed;
 }
