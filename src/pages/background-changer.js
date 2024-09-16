@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const colors = ["white", "blue", "red", "green", "yellow"];
 
-export const BackgroundChanger = ()  => {
+export const BackgroundChanger = () => {
     const [backgroundColor, setBackgroundColor] = useState("blue");
 
     const handleClick = () => {
@@ -24,8 +24,8 @@ export const BackgroundChanger = ()  => {
             <button onClick={handleClick} >change color</button>
             <div>
                 <label>Select a color</label>
-                <select 
-                    value={backgroundColor} 
+                <select
+                    value={backgroundColor}
                     onChange={handleSelectColor}
                 >
                     {
@@ -38,23 +38,31 @@ export const BackgroundChanger = ()  => {
                 </select>
             </div>
 
+            <div style={{ display: "flex", flexDirection: "column" }}>
+                {
+                    colors.map((color) => {
+                        return (
+                            <label>
+                                <input
+                                    type="radio"
+                                    value={color}
+                                    checked={backgroundColor === color}
+                                    onChange={handleSelectColor}
+                                />
+                                {color}
+                            </label>
+                        )
+                    })
+                }
+
+            </div>
+
             <div>
-                
                 <label>
-                    Blue
+                    Select any color
                     <input 
-                        type="radio"
-                        value="blue"
-                        checked={backgroundColor === "blue"}
-                        onChange={handleSelectColor}
-                    />
-                </label>
-                <label>
-                    Green
-                    <input 
-                        type="radio"
-                        value="green"
-                        checked={backgroundColor === "green"}
+                        type="color" 
+                        value={backgroundColor}
                         onChange={handleSelectColor}
                     />
                 </label>
