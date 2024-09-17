@@ -6,6 +6,7 @@ export default function InputTypes() {
         password: "",
         dateOfBirth: null,
         isSubscribed: false,
+        profileImage: null,
     });
 
     const handleChangeName = (e) => {
@@ -34,7 +35,13 @@ export default function InputTypes() {
             <h1>
                 Creating Forms in React
             </h1>
-            <form onSubmit={handleSubmit}>
+            <form 
+                onSubmit={handleSubmit}
+                style={{
+                    display: "flex", 
+                    flexDirection: "column"
+                }}
+            >
                 <label>
                     Name:
                     <input
@@ -73,9 +80,32 @@ export default function InputTypes() {
                         }}
                     />
                 </label>
+                <label>
+                    Select Image
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onInput={(e) => {
+                            const file = e.target.files[0]
+                            setFormData({
+                                ...formData,
+                                profileImage: URL.createObjectURL(file)
+                            });
+                        }}
+                    />
+                </label>
 
                 <button type="submit">Submit</button>
             </form>
+            <div>
+                <h3>your uploaded image is:</h3>
+                <img
+                    width={500}
+                    src={formData.profileImage}
+                    alt="profile image"
+                />
+            </div>
+            
         </div>
     )
 }
