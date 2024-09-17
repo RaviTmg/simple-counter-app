@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MyButton from "./my-button";
 import History from "./history";
 import { TodoList } from "./todo-list";
@@ -10,6 +10,8 @@ import Groceries from "./groceries";
 import Shopping from "./shopping";
 import { BackgroundChanger } from "./background-changer";
 import InputTypes from "./input-types";
+import RefsDemo from "./refs-demo";
+import UncontrolledInput from "./uncontrolled-input";
 
 const max_counter = 10;
 const min_counter = -10;
@@ -19,13 +21,18 @@ export default function Home() {
   const [ tempCount, setTempCount ] = useState(null);
   const [history, setHistory] = useState([]);
 
+  useEffect(() => {
+    //the logic that needs to be executed when the dependencies(count) changes
+    setHistory([...history, count]);
+    console.log("the value of count changed to", count);
+  }, [count]);
+
   const increaseCounter = () => {
     if (count >= max_counter) {
       alert("max counter reached");
       return;
     }
 
-    setHistory([...history, count]);
     setCount(count + 1);
     console.log(history);
   }
@@ -36,7 +43,6 @@ export default function Home() {
       return;
     }
 
-    setHistory(count);
     setCount(count - 1);
     console.log(history);
   }
@@ -47,7 +53,6 @@ export default function Home() {
   }
 
   const handleReset = () => {
-    setHistory(count);
     setCount(tempCount);
     console.log(history);
   }
@@ -102,6 +107,8 @@ export default function Home() {
         <Shopping/>
         <BackgroundChanger/>
         <InputTypes/>
+        <RefsDemo/>
+        <UncontrolledInput/>
       </main>
     </>
   );
